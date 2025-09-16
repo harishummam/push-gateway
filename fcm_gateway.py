@@ -3,7 +3,7 @@ import fcm_client
 
 app = FastAPI()
 
-@app.post("_matrix/push/v1/notify")
+@app.post("/_matrix/push/v1/notify")
 async def notify(request: Request):
     """
     Accept Matrix homeserver/Sygnal-style payloads,
