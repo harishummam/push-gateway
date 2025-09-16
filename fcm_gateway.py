@@ -3,7 +3,7 @@ import fcm_client
 
 app = FastAPI()
 
-@app.post("/matrix/notify")
+@app.post("_matrix/push/v1/notify")
 async def notify(request: Request):
     """
     Accept Matrix homeserver/Sygnal-style payloads,
@@ -17,7 +17,7 @@ async def notify(request: Request):
     if not devices:
         return {"status": 400, "error": "No devices in payload"}
 
-    device_token = devices[0].get("pushkey")  # Matrix "pushkey" = FCM device token
+    device_token = devices[0].get("pushkey")
 
     room_name = notif.get("room_name", "Matrix Room")
     body = notif.get("content", {}).get("body", "New message")
